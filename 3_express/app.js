@@ -1,4 +1,5 @@
 var express = require('express')
+var personController = require('./controllers/personController')
 var app = express()
 app.set('view engine', 'ejs')
 var person_api = require('./routes/person_api')
@@ -32,7 +33,10 @@ app.get('/api', function(req, res){
 });
 
 // Now let's learn routing in Express
-app.use('/api/p/', person_api)
+app.use('/api/p/v1/', person_api)
+
+personController(app);
+
 app.listen(3000);
 console.log('Server Running on port 3000')
 
